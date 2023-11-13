@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCPdfPager.h"
+#import "PiPiOCPdfPager+Internal.h"
 
 @interface PiPiOCPdfPager ()
 
@@ -17,6 +18,14 @@
     }
     
     return self;
+}
+
+- (BOOL)isOperable {
+    if (!self.cPager) {
+        return NO;
+    }
+    
+    return self.cPager->isOperable();
 }
 
 @end

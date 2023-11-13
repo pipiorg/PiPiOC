@@ -2,14 +2,10 @@
 #define PiPiOCPdfFiller_h
 
 #import <Foundation/Foundation.h>
-#import <pipi.h>
-
-using namespace PiPi;
 
 @interface PiPiOCPdfFiller : NSObject
 
-- (instancetype) initWithFiller: (PiPiFiller*) cFiller;
-
+- (BOOL) isOperable;
 - (void) fillImage: (NSString*) fieldName withImage:(NSData*) imageBytes;
 
 @end

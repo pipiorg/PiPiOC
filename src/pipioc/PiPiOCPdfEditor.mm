@@ -1,5 +1,6 @@
-#import "Foundation/Foundation.h"
+#import <Foundation/Foundation.h>
 #import "PiPiOCPdfEditor.h"
+#import "PiPiOCPdfEditor+Internal.h"
 
 @interface PiPiOCPdfEditor ()
 
@@ -8,6 +9,14 @@
 @end
 
 @implementation PiPiOCPdfEditor
+
+- (BOOL)isOperable {
+    if (!self.cEditor) {
+        return NO;
+    }
+    
+    return self.cEditor->isOperable();
+}
 
 - (instancetype)initWithCEditor:(PiPiEditor *)cEditor {
     self = [super init];

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCPdfFiller.h"
+#import "PiPiOCPdfFiller+Internal.h"
 
 @interface PiPiOCPdfFiller ()
 
@@ -17,6 +18,14 @@
     }
     
     return self;
+}
+
+- (BOOL)isOperable {
+    if (!self.cFiller) {
+        return NO;
+    }
+    
+    return self.cFiller->isOperable();
 }
 
 - (void)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {

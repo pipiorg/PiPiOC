@@ -1,5 +1,11 @@
 #import <Foundation/Foundation.h>
+#import <pipi.h>
 #import "PiPiOCPdfOperator.h"
+#import "PiPiOCPdfPager+Internal.h"
+#import "PiPiOCPdfEditor+Internal.h"
+#import "PiPiOCPdfFiller+Internal.h"
+
+using namespace PiPi;
 
 @interface PiPiOCPdfOperator ()
 
@@ -18,8 +24,6 @@
         delete self.cOperator;
         self.cOperator = NULL;
     }
-    
-    [super dealloc];
 }
 
 - (instancetype) initWithData:(NSData *)pdfBytes {
@@ -42,54 +46,42 @@
         self.pager = pager;
         self.filler = filler;
         self.editor = editor;
-        self.operable = YES;
     }
 
     return self;
 }
 
-- (NSData *)finalize {
-    [self check];
+- (BOOL)isOperable {
+    if (!self.cOperator) {
+        return NO;
+    }
     
+    return self.cOperator->isOperable();
+}
+
+- (NSData *)finalize {
     char* cPdfBytes;
     size_t cPdfSize;
     self.cOperator->finalize(&cPdfBytes, &cPdfSize);
     
     NSData* pdfBytes = [NSData dataWithBytes:cPdfBytes length:cPdfSize];
     
-    [self close];
+    delete self.cOperator;
+    self.cOperator = NULL;
     
     return pdfBytes;
 }
 
 - (PiPiOCPdfEditor *)getEditor {
-    [self check];
     return self.editor;
 }
 
 - (PiPiOCPdfFiller *)getFiller {
-    [self check];
     return self.filler;
 }
 
 - (PiPiOCPdfPager *)getPager {
-    [self check];
     return self.pager;
 }
-
-- (void) check {
-    if (!self.operable) {
-        // TODO: 拋異常
-    }
-}
-
-- (void) close {
-    if (self.operable) {
-        delete self.cOperator;
-        self.cOperator = NULL;
-        self.operable = NO;
-    }
-}
-
 
 @end
