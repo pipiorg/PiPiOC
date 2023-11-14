@@ -1,7 +1,5 @@
-#ifndef PiPiOCOperator_h
-#define PiPiOCOperator_h
-
 #import <Foundation/Foundation.h>
+#import "PiPiOCOperatePdfAdapter.h"
 #import "PiPiOCPdfPager.h"
 #import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfFiller.h"
@@ -19,5 +17,3 @@
 -(NSData*) finalize;
 
 @end
-
-#endif

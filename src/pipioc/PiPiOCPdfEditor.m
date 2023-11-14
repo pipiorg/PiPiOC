@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCPdfEditor.h"
-#import "PiPiOCEditPdfAdapter.h"
 
 @interface PiPiOCPdfEditor ()
 

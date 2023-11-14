@@ -1,9 +1,5 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCPdfOperator.h"
-#import "PiPiOCOperatePdfAdapter.h"
-#import "PiPiOCPdfPager.h"
-#import "PiPiOCPdfEditor.h"
-#import "PiPiOCPdfFiller.h"
 
 @interface PiPiOCPdfOperator ()
 
