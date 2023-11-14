@@ -2,7 +2,7 @@
 
 using namespace PiPi;
 
-@interface PiPiOCPdfEditor ()
+@interface PiPiOCEditPdfAdapter ()
 
 - (instancetype) initWithCEditor: (PiPiEditor*) cEditor;
 

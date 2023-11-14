@@ -1,10 +1,10 @@
-#ifndef PiPiOCPdfPager_h
-#define PiPiOCPdfPager_h
+#import <Foundation/Foundation.h>
+#import "PiPiOCPagePdfAdapter.h"
 
 @interface PiPiOCPdfPager : NSObject
 
--(BOOL) isOperable;
+- (instancetype) initWithAdapter: (PiPiOCPagePdfAdapter*) adapter;
+
+- (BOOL) isOperable;
 
 @end
-
-#endif

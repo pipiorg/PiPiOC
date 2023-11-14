@@ -1,9 +1,9 @@
-#ifndef PiPiOCPdfOperator_h
-#define PiPiOCPdfOperator_h
+#ifndef PiPiOCOperator_h
+#define PiPiOCOperator_h
 
 #import <Foundation/Foundation.h>
-#import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfPager.h"
+#import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfFiller.h"
 
 @interface PiPiOCPdfOperator : NSObject

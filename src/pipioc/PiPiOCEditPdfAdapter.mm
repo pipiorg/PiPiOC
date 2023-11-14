@@ -1,14 +1,14 @@
 #import <Foundation/Foundation.h>
-#import "PiPiOCPdfEditor.h"
-#import "PiPiOCPdfEditor+Internal.h"
+#import "PiPiOCEditPdfAdapter.h"
+#import "PiPiOCEditPdfAdapter+Internal.h"
 
-@interface PiPiOCPdfEditor ()
+@interface PiPiOCEditPdfAdapter ()
 
 @property (assign, atomic) PiPiEditor* cEditor;
 
 @end
 
-@implementation PiPiOCPdfEditor
+@implementation PiPiOCEditPdfAdapter
 
 - (BOOL)isOperable {
     if (!self.cEditor) {

@@ -1,23 +1,23 @@
 #import <Foundation/Foundation.h>
 #import <pipi.h>
-#import "PiPiOCPdfOperator.h"
-#import "PiPiOCPdfPager+Internal.h"
-#import "PiPiOCPdfEditor+Internal.h"
-#import "PiPiOCPdfFiller+Internal.h"
+#import "PiPiOCOperatePdfAdapter.h"
+#import "PiPiOCPagePdfAdapter+Internal.h"
+#import "PiPiOCFillPdfAdapter+Internal.h"
+#import "PiPiOCEditPdfAdapter+Internal.h"
 
 using namespace PiPi;
 
-@interface PiPiOCPdfOperator ()
+@interface PiPiOCOperatePdfAdapter ()
 
 @property (assign, atomic) PiPiOperator* cOperator;
 
-@property (strong, atomic) PiPiOCPdfEditor* editor;
-@property (strong, atomic) PiPiOCPdfFiller* filler;
-@property (strong, atomic) PiPiOCPdfPager* pager;
+@property (strong, atomic) PiPiOCEditPdfAdapter* editAdapter;
+@property (strong, atomic) PiPiOCFillPdfAdapter* fillAdapter;
+@property (strong, atomic) PiPiOCPagePdfAdapter* pageAdapter;
 
 @end
 
-@implementation PiPiOCPdfOperator
+@implementation PiPiOCOperatePdfAdapter
 
 - (void)dealloc {
     if (self.cOperator) {
@@ -38,14 +38,14 @@ using namespace PiPi;
         PiPiPager* cPager = cOperator->getPager();
         PiPiFiller* cFiller = cOperator->getFiller();
         
-        PiPiOCPdfPager* pager = [[PiPiOCPdfPager alloc] initWithCPager:cPager];
-        PiPiOCPdfEditor* editor = [[PiPiOCPdfEditor alloc] initWithCEditor:cEditor];
-        PiPiOCPdfFiller* filler = [[PiPiOCPdfFiller alloc] initWithFiller:cFiller];
+        PiPiOCPagePdfAdapter* pageAdapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:cPager];
+        PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
+        PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
         
         self.cOperator = cOperator;
-        self.pager = pager;
-        self.filler = filler;
-        self.editor = editor;
+        self.pageAdapter = pageAdapter;
+        self.fillAdapter = fillAdapter;
+        self.editAdapter = editAdapter;
     }
 
     return self;
@@ -72,16 +72,16 @@ using namespace PiPi;
     return pdfBytes;
 }
 
-- (PiPiOCPdfEditor *)getEditor {
-    return self.editor;
+- (PiPiOCEditPdfAdapter *)getEditAdapter {
+    return self.editAdapter;
 }
 
-- (PiPiOCPdfFiller *)getFiller {
-    return self.filler;
+- (PiPiOCFillPdfAdapter *)getFillAdapter {
+    return self.fillAdapter;
 }
 
-- (PiPiOCPdfPager *)getPager {
-    return self.pager;
+- (PiPiOCPagePdfAdapter *)getPageAdapter {
+    return self.pageAdapter;
 }
 
 @end

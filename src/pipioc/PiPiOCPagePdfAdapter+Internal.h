@@ -2,7 +2,7 @@
 
 using namespace PiPi;
 
-@interface PiPiOCPdfPager ()
+@interface PiPiOCPagePdfAdapter ()
 
 - (instancetype) initWithCPager: (PiPiPager*) cPager;
 

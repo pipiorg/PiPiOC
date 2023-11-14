@@ -1,13 +1,11 @@
-#ifndef PiPiOCPdfEditor_h
-#define PiPiOCPdfEditor_h
-
 #import <Foundation/Foundation.h>
+#import "PiPiOCEditPdfAdapter.h"
 
 @interface PiPiOCPdfEditor : NSObject
 
+- (instancetype) initWithAdapter: (PiPiOCEditPdfAdapter*) adapter;
+
 - (BOOL) isOperable;
-- (NSString*) flatten: (NSString*) fieldName;
+- (void) flatten: (NSString*) fieldName;
 
 @end
-
-#endif

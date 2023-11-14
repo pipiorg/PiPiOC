@@ -1,14 +1,14 @@
 #import <Foundation/Foundation.h>
-#import "PiPiOCPdfPager.h"
-#import "PiPiOCPdfPager+Internal.h"
+#import "PiPiOCPagePdfAdapter.h"
+#import "PiPiOCPagePdfAdapter+Internal.h"
 
-@interface PiPiOCPdfPager ()
+@interface PiPiOCPagePdfAdapter ()
 
 @property (assign, atomic) PiPiPager* cPager;
 
 @end
 
-@implementation PiPiOCPdfPager
+@implementation PiPiOCPagePdfAdapter
 
 - (instancetype)initWithCPager:(PiPiPager *)cPager {
     self = [super init];

@@ -1,14 +1,14 @@
 #import <Foundation/Foundation.h>
-#import "PiPiOCPdfFiller.h"
-#import "PiPiOCPdfFiller+Internal.h"
+#import "PiPiOCFillPdfAdapter.h"
+#import "PiPiOCFillPdfAdapter+Internal.h"
 
-@interface PiPiOCPdfFiller ()
+@interface PiPiOCFillPdfAdapter ()
 
 @property (assign, atomic) PiPiFiller* cFiller;
 
 @end
 
-@implementation PiPiOCPdfFiller
+@implementation PiPiOCFillPdfAdapter
 
 - (instancetype)initWithFiller:(PiPiFiller *)cFiller {
     self = [super init];

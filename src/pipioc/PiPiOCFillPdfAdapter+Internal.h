@@ -2,7 +2,7 @@
 
 using namespace PiPi;
 
-@interface PiPiOCPdfFiller ()
+@interface PiPiOCFillPdfAdapter ()
 
 - (instancetype) initWithFiller: (PiPiFiller*) cFiller;
 
