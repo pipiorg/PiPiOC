@@ -1,0 +1,26 @@
+[requires]
+openssl/3.0.12
+freetype/2.12.1
+libjpeg/9e
+libpng/1.6.39
+zlib/1.2.13
+libtiff/4.4.0
+fontconfig/2.13.93
+libxml2/2.10.3
+libiconv/1.17 
+
+[options]
+openssl:shared=False
+openssl:no_module=True
+libpng:shared=False
+libjpeg:shared=False
+freetype:shared=False
+zlib:shared=False
+fontconfig:shared=False
+libtiff:shared=False
+fontconfig:shared=False
+libxml2:shared=False
+libiconv:shared=False
+
+[imports]
+lib, *.a* -> ./bin
