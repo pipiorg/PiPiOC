@@ -23,6 +23,10 @@
     return [self.adapter isOperable];
 }
 
+- (void)fill:(NSString*)fieldName withValue:(NSString*)value {
+    [self.adapter fill:fieldName withValue:value];
+}
+
 - (void)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
     [self.adapter fillImage:fieldName withImage:imageBytes];
 }

@@ -28,6 +28,13 @@
     return self.cFiller->isOperable();
 }
 
+- (void)fill: (NSString*) fieldName withValue: (NSString*)value {
+    std::string cFieldName = std::string([fieldName UTF8String]);
+    std::string cValue = std::string([value UTF8String]);
+    
+    self.cFiller->fillValue(cFieldName, cValue);
+}
+
 - (void)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
     char* cImageBytes = (char*) [imageBytes bytes];
     size_t cImageSize = [imageBytes length];
