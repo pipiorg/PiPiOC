@@ -3,6 +3,7 @@
 #import "PiPiOCPdfPager.h"
 #import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfFiller.h"
+#import "PiPiOCPdfExtractor.h"
 
 @interface PiPiOCPdfOperator : NSObject
 
@@ -13,6 +14,7 @@
 -(PiPiOCPdfEditor*) getEditor;
 -(PiPiOCPdfFiller*) getFiller;
 -(PiPiOCPdfPager*) getPager;
+-(PiPiOCPdfExtractor*) getExtractor;
 
 -(NSData*) finalize;
 
