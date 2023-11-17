@@ -28,7 +28,11 @@
     return self;
 }
 
-- (NSString *)flatten:(NSString *)fieldName {
+- (void)flatten {
+    self.cEditor->flatten();
+}
+
+- (void)flatten:(NSString *)fieldName {
     std::string cFieldName = std::string([fieldName UTF8String]);
     self.cEditor->flatten(cFieldName);
 }

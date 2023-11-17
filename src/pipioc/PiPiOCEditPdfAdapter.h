@@ -3,6 +3,7 @@
 @interface PiPiOCEditPdfAdapter : NSObject
 
 - (BOOL) isOperable;
-- (NSString*) flatten: (NSString*) fieldName;
+- (void) flatten;
+- (void) flatten: (NSString*) fieldName;
 
 @end

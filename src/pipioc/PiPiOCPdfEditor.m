@@ -23,6 +23,10 @@
     return [self.adapter isOperable];
 }
 
+- (void)flatten {
+    [self.adapter flatten];
+}
+
 - (void)flatten:(NSString *)fieldName {
     [self.adapter flatten:fieldName];
 }

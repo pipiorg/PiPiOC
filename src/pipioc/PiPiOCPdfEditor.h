@@ -6,6 +6,7 @@
 - (instancetype) initWithAdapter: (PiPiOCEditPdfAdapter*) adapter;
 
 - (BOOL) isOperable;
+- (void) flatten;
 - (void) flatten: (NSString*) fieldName;
 
 @end
