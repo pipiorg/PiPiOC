@@ -14,8 +14,6 @@ int main() {
         NSData* outPdfBytes = [aOperator finalize];
         
         [outPdfBytes writeToFile:@"" atomically:YES];
-        
-        PiPiOCPdfOperator* aOperator2 = [[PiPiOCPdfOperator alloc] initWithData:outPdfBytes];
     }
     return 0;
 }
