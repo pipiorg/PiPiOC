@@ -7,12 +7,15 @@ int main() {
         
         PiPiOCPdfOperator* aOperator = [[PiPiOCPdfOperator alloc] initWithData:pdfBytes];
         PiPiOCPdfEditor* editor = [aOperator getEditor];
-        
-        [editor flatten:@""];
+        PiPiOCPdfFiller* filler = [aOperator getFiller];
+        PiPiOCPdfExtractor* extractor = [aOperator getExtractor];
+        PiPiOCPdfPager* pager = [aOperator getPager];
         
         NSData* outPdfBytes = [aOperator finalize];
         
         [outPdfBytes writeToFile:@"" atomically:YES];
+        
+        PiPiOCPdfOperator* aOperator2 = [[PiPiOCPdfOperator alloc] initWithData:outPdfBytes];
     }
     return 0;
 }
