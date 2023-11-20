@@ -31,16 +31,16 @@
     [self.adapter flatten:fieldName];
 }
 
-- (void)removeFormField:(NSString *)fieldName {
-    [self.adapter removeFormField:fieldName];
+- (void)removeField:(NSString *)fieldName {
+    [self.adapter removeField:fieldName];
 }
 
-- (void)renameFormField:(NSString *)oldFieldName to:(NSString *)newFieldName {
-    [self.adapter renameFormField:oldFieldName to:newFieldName];
+- (void)renameField:(NSString *)oldFieldName to:(NSString *)newFieldName {
+    [self.adapter renameField:oldFieldName to:newFieldName];
 }
 
-- (void)addFormField:(NSString *)fieldName forType:(PiPiOCPdfFieldType)type atPage:(unsigned int)page atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
-    [self.adapter addFormField:fieldName forType:type atPage:page atX:x atY:y withWidth:width withHeight:height];
+- (void)addField:(NSString *)fieldName forType:(PiPiOCPdfFieldType)type atPage:(unsigned int)page atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
+    [self.adapter addField:fieldName forType:type atPage:page atX:x atY:y withWidth:width withHeight:height];
 }
 
 @end

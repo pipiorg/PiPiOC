@@ -68,11 +68,11 @@
         double y = cField->y;
         double width = cField->width;
         double height = cField->height;
-        std::string cFont = cField->font;
+        std::string cFontName = cField->fontName;
         float fontSize = cField->fontSize;
         
         NSString* name = [NSString stringWithCString:cName.c_str() encoding:[NSString defaultCStringEncoding]];
-        NSString* font = [NSString stringWithCString:cFont.c_str() encoding:[NSString defaultCStringEncoding]];
+        NSString* fontName = [NSString stringWithCString:cFontName.c_str() encoding:[NSString defaultCStringEncoding]];
         
         PiPiOCPdfField* field = [[PiPiOCPdfField alloc] init];
         
@@ -80,7 +80,7 @@
         [field setY:y];
         [field setWidth:width];
         [field setHeight:height];
-        [field setFont:font];
+        [field setFontName:fontName];
         [field setName:name];
         
         switch (cType) {

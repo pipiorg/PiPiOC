@@ -8,9 +8,9 @@
 - (BOOL) isOperable;
 - (void) flatten;
 - (void) flatten: (NSString*) fieldName;
-- (void) removeFormField: (NSString*) fieldName;
-- (void) renameFormField: (NSString*) oldFieldName to: (NSString*) newFieldName;
-- (void) addFormField: (NSString*) fieldName forType: (PiPiOCPdfFieldType) type atPage: (unsigned int) page atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
+- (void) removeField: (NSString*) fieldName;
+- (void) renameField: (NSString*) oldFieldName to: (NSString*) newFieldName;
+- (void) addField: (NSString*) fieldName forType: (PiPiOCPdfFieldType) type atPage: (unsigned int) page atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
 
 
 @end

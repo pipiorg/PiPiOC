@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, PiPiOCPdfFieldType) {
 @property (assign, atomic) double y;
 @property (assign, atomic) double width;
 @property (assign, atomic) double height;
-@property (strong, atomic) NSString* font;
+@property (strong, atomic) NSString* fontName;
 @property (assign, atomic) double fontSize;
 
 @end
