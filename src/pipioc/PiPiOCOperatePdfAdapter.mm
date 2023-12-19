@@ -5,6 +5,7 @@
 #import "PiPiOCFillPdfAdapter+Internal.h"
 #import "PiPiOCEditPdfAdapter+Internal.h"
 #import "PiPiOCExtractPdfAdapter+Internal.h"
+#import "PiPiOCFontManageAdapter+Internal.h"
 
 using namespace PiPi;
 
@@ -16,6 +17,7 @@ using namespace PiPi;
 @property (strong, atomic) PiPiOCFillPdfAdapter* fillAdapter;
 @property (strong, atomic) PiPiOCPagePdfAdapter* pageAdapter;
 @property (strong, atomic) PiPiOCExtractPdfAdapter* extractAdapter;
+@property (strong, atomic) PiPiOCFontManageAdapter* fontManageAdapter;
 
 @end
 
@@ -40,17 +42,20 @@ using namespace PiPi;
         PiPiPager* cPager = cOperator->getPager();
         PiPiFiller* cFiller = cOperator->getFiller();
         PiPiExtractor* cExtractor = cOperator->getExtractor();
+        PiPiFontManager* cFontManager = cOperator->getFontManager();
         
         PiPiOCPagePdfAdapter* pageAdapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:cPager];
         PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
         PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
         PiPiOCExtractPdfAdapter* extractAdapter = [[PiPiOCExtractPdfAdapter alloc] initWithCExtractor:cExtractor];
+        PiPiOCFontManageAdapter* fontManageAdapter = [[PiPiOCFontManageAdapter alloc] initWithCFontManager:cFontManager];
         
         self.cOperator = cOperator;
         self.pageAdapter = pageAdapter;
         self.fillAdapter = fillAdapter;
         self.editAdapter = editAdapter;
         self.extractAdapter = extractAdapter;
+        self.fontManageAdapter = fontManageAdapter;
     }
 
     return self;
@@ -91,6 +96,10 @@ using namespace PiPi;
 
 - (PiPiOCExtractPdfAdapter *)getExtractAdapter {
     return self.extractAdapter;
+}
+
+- (PiPiOCFontManageAdapter *)getFontManagerAdapter {
+    return self.fontManageAdapter;
 }
 
 @end

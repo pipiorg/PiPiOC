@@ -28,20 +28,33 @@
     return self.cFiller->isOperable();
 }
 
-- (void)fill: (NSString*) fieldName withValue: (NSString*)value {
+- (PiPiOCFillPdfAdapter*)fill: (NSString*) fieldName withValue: (NSString*)value {
     std::string cFieldName = std::string([fieldName UTF8String]);
     std::string cValue = std::string([value UTF8String]);
     
     self.cFiller->fillValue(cFieldName, cValue);
+    
+    return self;
 }
 
-- (void)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
+- (PiPiOCFillPdfAdapter*)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
     char* cImageBytes = (char*) [imageBytes bytes];
     size_t cImageSize = [imageBytes length];
     
     std::string cFieldName = std::string([fieldName UTF8String]);
     
     self.cFiller->fillImage(cFieldName, cImageBytes, cImageSize);
+    
+    return self;
+}
+
+- (PiPiOCFillPdfAdapter*)fill:(NSString *)fieldName withValue:(NSString *)value withEllipsis:(BOOL)ellipsis {
+    std::string cFieldName = std::string([fieldName UTF8String]);
+    std::string cValue = std::string([value UTF8String]);
+    
+    self.cFiller->fillValue(cFieldName, cValue, ellipsis);
+    
+    return self;
 }
 
 @end

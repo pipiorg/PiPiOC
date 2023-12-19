@@ -63,7 +63,7 @@
         
         std::string cName = cField->name;
         PiPiFieldType cType = cField->type;
-        unsigned int page = cField->page;
+        unsigned int pageIndex = cField->pageIndex;
         double x = cField->x;
         double y = cField->y;
         double width = cField->width;
@@ -76,6 +76,7 @@
         
         PiPiOCPdfField* field = [[PiPiOCPdfField alloc] init];
         
+        [field setPageIndex:pageIndex];
         [field setX:x];
         [field setY:y];
         [field setWidth:width];

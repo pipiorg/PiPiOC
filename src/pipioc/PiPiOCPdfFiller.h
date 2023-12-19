@@ -6,7 +6,8 @@
 - (instancetype) initWithAdapter: (PiPiOCFillPdfAdapter*) adapter;
 
 - (BOOL) isOperable;
-- (void) fill: (NSString*) fieldName withValue:(NSString*) value;
-- (void) fillImage: (NSString*) fieldName withImage:(NSData*) imageBytes;
+- (PiPiOCPdfFiller*) fill: (NSString*) fieldName withValue:(NSString*) value;
+- (PiPiOCPdfFiller*) fill: (NSString*) fieldName withValue:(NSString*) value withEllipsis:(BOOL)ellipsis;
+- (PiPiOCPdfFiller*) fillImage: (NSString*) fieldName withImage:(NSData*) imageBytes;
 
 @end

@@ -23,12 +23,19 @@
     return [self.adapter isOperable];
 }
 
-- (void)fill:(NSString*)fieldName withValue:(NSString*)value {
+- (PiPiOCPdfFiller*)fill:(NSString*)fieldName withValue:(NSString*)value {
     [self.adapter fill:fieldName withValue:value];
+    return self;
 }
 
-- (void)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
+- (PiPiOCPdfFiller *)fill:(NSString *)fieldName withValue:(NSString *)value withEllipsis:(BOOL)ellipsis {
+    [self.adapter fill:fieldName withValue:value withEllipsis:ellipsis];
+    return self;
+}
+
+- (PiPiOCPdfFiller*)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
     [self.adapter fillImage:fieldName withImage:imageBytes];
+    return self;
 }
 
 @end

@@ -8,6 +8,7 @@
 @property (strong, atomic) PiPiOCPdfEditor* editor;
 @property (strong, atomic) PiPiOCPdfFiller* filler;
 @property (strong, atomic) PiPiOCPdfExtractor* extractor;
+@property (strong, atomic) PiPiOCPdfFontManager* fontManager;
 
 @end
 
@@ -23,17 +24,20 @@
         PiPiOCFillPdfAdapter* fillAdapter = [operateAdapter getFillAdapter];
         PiPiOCEditPdfAdapter* editAdapter = [operateAdapter getEditAdapter];
         PiPiOCExtractPdfAdapter* extractAdapter = [operateAdapter getExtractAdapter];
+        PiPiOCFontManageAdapter* fontManageAdapter = [operateAdapter getFontManagerAdapter];
         
         PiPiOCPdfPager* pager = [[PiPiOCPdfPager alloc] initWithAdapter:pageAdapter];
         PiPiOCPdfEditor* editor = [[PiPiOCPdfEditor alloc] initWithAdapter:editAdapter];
         PiPiOCPdfFiller* filler = [[PiPiOCPdfFiller alloc] initWithAdapter:fillAdapter];
         PiPiOCPdfExtractor* extractor = [[PiPiOCPdfExtractor alloc] initWithAdapter:extractAdapter];
+        PiPiOCPdfFontManager* fontManager = [[PiPiOCPdfFontManager alloc] initWithAdapter:fontManageAdapter];
         
         self.adapter = operateAdapter;
         self.pager = pager;
         self.editor = editor;
         self.filler = filler;
         self.extractor = extractor;
+        self.fontManager = fontManager;
     }
     
     return self;
@@ -61,6 +65,10 @@
 
 - (NSData *)finalize {
     return [self.adapter finalize];
+}
+
+- (PiPiOCPdfFontManager *)getFontManager {
+    return self.fontManager;
 }
 
 @end

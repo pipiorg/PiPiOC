@@ -3,6 +3,7 @@
 #import "PiPiOCPagePdfAdapter.h"
 #import "PiPiOCFillPdfAdapter.h"
 #import "PiPiOCExtractPdfAdapter.h"
+#import "PiPiOCFontManageAdapter.h"
 
 @interface PiPiOCOperatePdfAdapter : NSObject
 
@@ -14,6 +15,7 @@
 -(PiPiOCFillPdfAdapter*) getFillAdapter;
 -(PiPiOCPagePdfAdapter*) getPageAdapter;
 -(PiPiOCExtractPdfAdapter*) getExtractAdapter;
+-(PiPiOCFontManageAdapter*) getFontManagerAdapter;
 
 -(NSData*) finalize;
 
