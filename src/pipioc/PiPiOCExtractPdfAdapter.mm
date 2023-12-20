@@ -83,6 +83,7 @@
         [field setHeight:height];
         [field setFontName:fontName];
         [field setName:name];
+        [field setFontSize:fontSize];
         
         switch (cType) {
             case PiPiFieldType::CheckBox:
