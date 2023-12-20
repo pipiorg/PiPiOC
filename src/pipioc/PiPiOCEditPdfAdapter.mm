@@ -45,19 +45,19 @@
     return self;
 }
 
-- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex {
+- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex {
     std::string cFieldName = std::string([fieldName UTF8String]);
     self.cEditor->removeField(cFieldName, pageIndex);
     return self;
 }
 
-- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex atX:(double)x atY:(double)y {
+- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y {
     std::string cFieldName = std::string([fieldName UTF8String]);
     self.cEditor->removeField(cFieldName, pageIndex, x, y);
     return self;
 }
 
-- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
+- (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
     std::string cFieldName = std::string([fieldName UTF8String]);
     self.cEditor->removeField(cFieldName, pageIndex, x, y, width, height);
     return self;

@@ -11,9 +11,9 @@
 - (PiPiOCEditPdfAdapter*) addField: (NSString*) fieldName forType: (PiPiOCPdfFieldType) type atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
 
 - (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName;
-- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex;
-- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y;
-- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
+- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (long) pageIndex;
+- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (long) pageIndex atX: (double) x atY: (double) y;
+- (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (long) pageIndex atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
 
 - (PiPiOCEditPdfAdapter*) renameField: (NSString*) oldFieldName to: (NSString*) newFieldName;
 

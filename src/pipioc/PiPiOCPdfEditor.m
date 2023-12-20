@@ -38,17 +38,17 @@
     return self;
 }
 
-- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex {
+- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(long)pageIndex {
     [self.adapter removeField:fieldName atPage:pageIndex];
     return self;
 }
 
-- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex atX:(double)x atY:(double)y {
+- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y {
     [self.adapter removeField:fieldName atPage:pageIndex atX:x atY:y];
     return self;
 }
 
-- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(unsigned int)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
+- (PiPiOCPdfEditor *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
     [self.adapter removeField:fieldName atPage:pageIndex atX:x atY:y withWidth:width withHeight:height];
     return self;
 }
