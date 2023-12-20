@@ -11,11 +11,11 @@
 - (PiPiOCPdfEditor*) flatten: (NSString*) fieldName;
 
 - (PiPiOCPdfEditor*) removeField: (NSString*) fieldName;
-
-- (PiPiOCPdfEditor*) removeField: (NSString*) fieldName;
 - (PiPiOCPdfEditor*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex;
 - (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y;
 - (PiPiOCEditPdfAdapter*) removeField: (NSString*) fieldName atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
+
+- (PiPiOCPdfEditor*) addField: (NSString*) fieldName forType: (PiPiOCPdfFieldType) type atPage: (unsigned int) pageIndex atX: (double) x atY: (double) y withWidth: (double) width withHeight: (double) height;
 
 - (PiPiOCPdfEditor*) renameField: (NSString*) oldFieldName to: (NSString*) newFieldName;
 

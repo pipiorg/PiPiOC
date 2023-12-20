@@ -53,6 +53,11 @@
     return self;
 }
 
+- (PiPiOCPdfEditor *)addField:(NSString *)fieldName forType:(PiPiOCPdfFieldType)type atPage:(unsigned int)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
+    [self.adapter addField:fieldName forType:type atPage:pageIndex atX:x atY:y withWidth:width withHeight:height];
+    return self;
+}
+
 - (PiPiOCPdfEditor*)renameField:(NSString *)oldFieldName to:(NSString *)newFieldName {
     [self.adapter renameField:oldFieldName to:newFieldName];
     return self;
