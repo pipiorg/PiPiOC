@@ -63,11 +63,6 @@
     return self;
 }
 
-- (PiPiOCPdfEditor*)addField:(NSString *)fieldName forType:(PiPiOCPdfFieldType)type atPage:(unsigned int)page atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
-    [self.adapter addField:fieldName forType:type atPage:page atX:x atY:y withWidth:width withHeight:height];
-    return self;
-}
-
 - (PiPiOCPdfEditor *)setField:(NSString *)fieldName withBackgroundColorRed:(float)red withBackgrondColorGreen:(float)green withBackgroundColorBlue:(float)blue {
     [self.adapter setField:fieldName withBackgroundColorRed:red withBackgrondColorGreen:green withBackgroundColorBlue:blue];
     return self;
