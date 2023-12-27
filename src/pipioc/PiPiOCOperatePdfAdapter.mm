@@ -30,8 +30,6 @@ NSString* const PiPiOCOperatePdfUnknownExceptionName = @"PiPiOCOperatePdfUnknown
         delete self.cOperator;
         self.cOperator = NULL;
     }
-    
-    [super dealloc];
 }
 
 - (instancetype) initWithData:(NSData *)pdfBytes {
