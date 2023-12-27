@@ -23,39 +23,50 @@ using namespace PiPi;
 
 @implementation PiPiOCOperatePdfAdapter
 
+NSString* const PiPiOCOperatePdfUnknownExceptionName = @"PiPiOCOperatePdfUnknownException";
+
 - (void)dealloc {
     if (self.cOperator) {
         delete self.cOperator;
         self.cOperator = NULL;
     }
+    
+    [super dealloc];
 }
 
 - (instancetype) initWithData:(NSData *)pdfBytes {
     self = [super init];
     
     if (self) {
-        size_t cPdfSize = [pdfBytes length];
-        char* cPdfBytes = (char *)[pdfBytes bytes];
-        
-        PiPiOperator* cOperator = new PiPiOperator(cPdfBytes, cPdfSize);
-        PiPiEditor* cEditor = cOperator->getEditor();
-        PiPiPager* cPager = cOperator->getPager();
-        PiPiFiller* cFiller = cOperator->getFiller();
-        PiPiExtractor* cExtractor = cOperator->getExtractor();
-        PiPiFontManager* cFontManager = cOperator->getFontManager();
-        
-        PiPiOCPagePdfAdapter* pageAdapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:cPager];
-        PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
-        PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
-        PiPiOCExtractPdfAdapter* extractAdapter = [[PiPiOCExtractPdfAdapter alloc] initWithCExtractor:cExtractor];
-        PiPiOCFontManageAdapter* fontManageAdapter = [[PiPiOCFontManageAdapter alloc] initWithCFontManager:cFontManager];
-        
-        self.cOperator = cOperator;
-        self.pageAdapter = pageAdapter;
-        self.fillAdapter = fillAdapter;
-        self.editAdapter = editAdapter;
-        self.extractAdapter = extractAdapter;
-        self.fontManageAdapter = fontManageAdapter;
+        try {
+            size_t cPdfSize = [pdfBytes length];
+            char* cPdfBytes = (char *)[pdfBytes bytes];
+            
+            PiPiOperator* cOperator = new PiPiOperator(cPdfBytes, cPdfSize);
+            PiPiEditor* cEditor = cOperator->getEditor();
+            PiPiPager* cPager = cOperator->getPager();
+            PiPiFiller* cFiller = cOperator->getFiller();
+            PiPiExtractor* cExtractor = cOperator->getExtractor();
+            PiPiFontManager* cFontManager = cOperator->getFontManager();
+            
+            PiPiOCPagePdfAdapter* pageAdapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:cPager];
+            PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
+            PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
+            PiPiOCExtractPdfAdapter* extractAdapter = [[PiPiOCExtractPdfAdapter alloc] initWithCExtractor:cExtractor];
+            PiPiOCFontManageAdapter* fontManageAdapter = [[PiPiOCFontManageAdapter alloc] initWithCFontManager:cFontManager];
+            
+            self.cOperator = cOperator;
+            self.pageAdapter = pageAdapter;
+            self.fillAdapter = fillAdapter;
+            self.editAdapter = editAdapter;
+            self.extractAdapter = extractAdapter;
+            self.fontManageAdapter = fontManageAdapter;
+        } catch (const std::exception e) {
+            const char* cReason = e.what();
+            NSString* reason = [NSString stringWithUTF8String:cReason];
+            
+            @throw [NSException exceptionWithName:PiPiOCOperatePdfUnknownExceptionName reason:reason userInfo:nil];
+        }
     }
 
     return self;
@@ -70,16 +81,23 @@ using namespace PiPi;
 }
 
 - (NSData *)finalize {
-    char* cPdfBytes;
-    size_t cPdfSize;
-    self.cOperator->finalize(&cPdfBytes, &cPdfSize);
-    
-    NSData* pdfBytes = [NSData dataWithBytes:cPdfBytes length:cPdfSize];
-    
-    delete self.cOperator;
-    self.cOperator = NULL;
-    
-    return pdfBytes;
+    try {
+        char* cPdfBytes;
+        size_t cPdfSize;
+        self.cOperator->finalize(&cPdfBytes, &cPdfSize);
+        
+        NSData* pdfBytes = [NSData dataWithBytes:cPdfBytes length:cPdfSize];
+        
+        delete self.cOperator;
+        self.cOperator = NULL;
+        
+        return pdfBytes;
+    } catch (const std::exception e) {
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCOperatePdfUnknownExceptionName reason:reason userInfo:nil];
+    }
 }
 
 - (PiPiOCEditPdfAdapter *)getEditAdapter {
