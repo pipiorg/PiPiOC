@@ -27,56 +27,66 @@ NSString* const PiPiOCFillPdfUnknownExceptionName = @"PiPiOCFillPdfUnknownExcept
         return NO;
     }
     
-    return self.cFiller->isOperable();
+    return self.cFiller->IsOperable();
 }
 
 - (PiPiOCFillPdfAdapter*)fill: (NSString*) fieldName withValue: (NSString*)value {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
         std::string cValue = std::string([value UTF8String]);
         
-        self.cFiller->fillValue(cFieldName, cValue);
+        self.cFiller->FillValue(cFieldName, cValue);
         
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCFillPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCFillPdfAdapter*)fillImage:(NSString *)fieldName withImage:(NSData *)imageBytes {
-    try {
+    return [self handleException:^id{
         char* cImageBytes = (char*) [imageBytes bytes];
         size_t cImageSize = [imageBytes length];
         
         std::string cFieldName = std::string([fieldName UTF8String]);
         
-        self.cFiller->fillImage(cFieldName, cImageBytes, cImageSize);
+        self.cFiller->FillImage(cFieldName, cImageBytes, cImageSize);
         
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCFillPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCFillPdfAdapter*)fill:(NSString *)fieldName withValue:(NSString *)value withEllipsis:(BOOL)ellipsis {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
         std::string cValue = std::string([value UTF8String]);
         
-        self.cFiller->fillValue(cFieldName, cValue, ellipsis);
+        self.cFiller->FillValue(cFieldName, cValue, ellipsis);
         
         return self;
-    } catch (const std::exception e) {
+    }];
+}
+
+- (id) handleException: (id (^)())task {
+    try {
+        return task();
+    } catch (PiPiAppearanceException& e) {
+        PiPiAppearanceException::PiPiAppearanceExceptionCode cCode = e.getCode();
+        
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];
         
-        @throw [NSException exceptionWithName:PiPiOCFillPdfUnknownExceptionName reason:reason userInfo:nil];
+        @throw [NSException exceptionWithName:PiPiOCAppearanceExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
+    } catch (PiPiFillFieldException& e) {
+        PiPiFillFieldException::PiPiFillFieldExceptionCode cCode = e.getCode();
+        
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCFillFieldExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
+    } catch (std::exception& e) {
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
     }
 }
 

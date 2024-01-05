@@ -10,14 +10,12 @@
 
 @implementation PiPiOCEditPdfAdapter
 
-NSString* const PiPiOCEditPdfUnknownExceptionName = @"PiPiOCEditPdfUnkownException";
-
 - (BOOL)isOperable {
     if (!self.cEditor) {
         return NO;
     }
     
-    return self.cEditor->isOperable();
+    return self.cEditor->IsOperable();
 }
 
 - (instancetype)initWithCEditor:(PiPiEditor *)cEditor {
@@ -31,217 +29,167 @@ NSString* const PiPiOCEditPdfUnknownExceptionName = @"PiPiOCEditPdfUnkownExcepti
 }
 
 - (PiPiOCEditPdfAdapter*)flatten {
-    try {
-        self.cEditor->flatten();
+    return [self handleException:^id{
+        self.cEditor->Flatten();
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter*)flatten:(NSString *)fieldName {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->flatten(cFieldName);
+        self.cEditor->Flatten(cFieldName);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter*)removeField:(NSString *)fieldName {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->removeField(cFieldName);
+        self.cEditor->RemoveField(cFieldName);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->removeField(cFieldName, pageIndex);
+        self.cEditor->RemoveField(cFieldName, pageIndex);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->removeField(cFieldName, pageIndex, x, y);
+        self.cEditor->RemoveField(cFieldName, pageIndex, x, y);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)removeField:(NSString *)fieldName atPage:(long)pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->removeField(cFieldName, pageIndex, x, y, width, height);
+        self.cEditor->RemoveField(cFieldName, pageIndex, x, y, width, height);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter*)renameField:(NSString *)oldFieldName to:(NSString *)newFieldName {
-    try {
+    return [self handleException:^id{
         std::string cOldFieldName = std::string([oldFieldName UTF8String]);
         std::string cNewFieldName = std::string([newFieldName UTF8String]);
-        self.cEditor->renameField(cOldFieldName, cNewFieldName);
+        self.cEditor->RenameField(cOldFieldName, cNewFieldName);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter*)addField:(NSString *)fieldName forType:(PiPiOCPdfFieldType)type atPage: (unsigned int) pageIndex atX:(double)x atY:(double)y withWidth:(double)width withHeight:(double)height {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
         
         switch (type) {
             case PiPiOCPdfFieldTypeUnknown:
                 break;
             case PiPiOCPdfFieldTypeTextBox:
-                self.cEditor->addField(cFieldName, PiPiFieldType::TextBox, pageIndex, x, y, width, height);
+                self.cEditor->AddField(cFieldName, PiPiFieldType::TextBox, pageIndex, x, y, width, height);
                 break;
             case PiPiOCPdfFieldTypeCheckBox:
-                self.cEditor->addField(cFieldName, PiPiFieldType::CheckBox, pageIndex, x, y, width, height);
+                self.cEditor->AddField(cFieldName, PiPiFieldType::CheckBox, pageIndex, x, y, width, height);
                 break;
         }
         
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withBackgroundColorRed:(float)red withBackgrondColorGreen:(float)green withBackgroundColorBlue:(float)blue {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->setFieldBackgroundColor(cFieldName, red, green, blue);
+        self.cEditor->SetFieldBackgroundColor(cFieldName, red, green, blue);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withBorderColorRed:(float)red withBorderColorGreen:(float)green withBorderColorBlue:(float)blue {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->setFieldBorderColor(cFieldName, red, green, blue);
+        self.cEditor->SetFieldBorderColor(cFieldName, red, green, blue);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withColorRed:(float)red withColorGreen:(float)green withColorBlue:(float)blue {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->setFieldColor(cFieldName, red, green, blue);
+        self.cEditor->SetFieldColor(cFieldName, red, green, blue);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withTextHorizontalAlignment:(PiPiOCTextHorizontalAlignment)textHorizontalAlignment {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
         
         switch (textHorizontalAlignment) {
             case PiPiOCTextHorizontalAlignmentRight:
-                self.cEditor->setFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Right);
+                self.cEditor->SetFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Right);
                 break;
             case PiPiOCTextHorizontalAlignmentCenter:
-                self.cEditor->setFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Center);
+                self.cEditor->SetFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Center);
                 break;
             default:
-                self.cEditor->setFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Left);
+                self.cEditor->SetFieldTextHorizontalAlignment(cFieldName, PiPiTextHorizontalAlignment::Left);
                 break;
         }
         
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withFontSize:(float)fontSize {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->setFieldFontSize(cFieldName, fontSize);
+        self.cEditor->SetFieldFontSize(cFieldName, fontSize);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withFontName:(NSString *)fontName {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
         std::string cFontName = std::string([fontName UTF8String]);
-        self.cEditor->setFieldFontName(cFieldName, cFontName);
+        self.cEditor->SetFieldFontName(cFieldName, cFontName);
         return self;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (PiPiOCEditPdfAdapter *)setField:(NSString *)fieldName withMultiline:(BOOL)multiline {
-    try {
+    return [self handleException:^id{
         std::string cFieldName = std::string([fieldName UTF8String]);
-        self.cEditor->setFieldMultiline(cFieldName, multiline);
+        self.cEditor->SetFieldMultiline(cFieldName, multiline);
         return self;
-    } catch (const std::exception e) {
+    }];
+}
+
+- (id) handleException: (id (^)())task {
+    try {
+        return task();
+    } catch (PiPiEditFieldException& e) {
+        PiPiEditFieldException::PiPiEditFieldExceptionCode cCode = e.getCode();
+        
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCEditFieldExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
+    } catch (PiPiManageFieldException& e) {
+        PiPiManageFieldException::PiPiManageFieldExceptionCode cCode = e.getCode();
+        
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCManageFieldExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
+    } catch (std::exception& e) {
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];
         

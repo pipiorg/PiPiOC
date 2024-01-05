@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCPdfField.h"
+#import "PiPiOCExceptionName.h"
 
 @interface PiPiOCEditPdfAdapter : NSObject
 

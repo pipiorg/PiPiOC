@@ -5,6 +5,8 @@
 
 - (instancetype) initWithAdapter: (PiPiOCPagePdfAdapter*) adapter;
 
-- (BOOL) isOperable;
+-(NSData*) merge:(NSArray<NSNumber*>*) indexs;
+-(NSArray<NSData*>*) split:(unsigned int) index withInstruction:(NSString*) instruction;
+
 
 @end

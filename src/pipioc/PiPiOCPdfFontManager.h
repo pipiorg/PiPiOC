@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCFontManageAdapter.h"
+#import "PiPiOCExceptionName.h"
 
 @interface PiPiOCPdfFontManager : NSObject
 

@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCEditPdfAdapter.h"
-#import "PiPiOCPagePdfAdapter.h"
 #import "PiPiOCFillPdfAdapter.h"
 #import "PiPiOCExtractPdfAdapter.h"
 #import "PiPiOCFontManageAdapter.h"
@@ -13,7 +12,6 @@
 
 -(PiPiOCEditPdfAdapter*) getEditAdapter;
 -(PiPiOCFillPdfAdapter*) getFillAdapter;
--(PiPiOCPagePdfAdapter*) getPageAdapter;
 -(PiPiOCExtractPdfAdapter*) getExtractAdapter;
 -(PiPiOCFontManageAdapter*) getFontManagerAdapter;
 

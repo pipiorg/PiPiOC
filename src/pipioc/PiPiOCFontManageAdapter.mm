@@ -26,7 +26,7 @@ NSString* const PiPiOCManageFontUnknownExceptionName = @"PiPiOCManageFontUnknown
         return NO;
     }
     
-    return self.cFontManager->isOperable();
+    return self.cFontManager->IsOperable();
 }
 
 - (NSString*)registerFont:(NSData *)fontBytes {
@@ -34,11 +34,11 @@ NSString* const PiPiOCManageFontUnknownExceptionName = @"PiPiOCManageFontUnknown
         size_t cFontSize = [fontBytes length];
         char* cFontBytes = (char *)[fontBytes bytes];
         
-        std::string cFontName = self.cFontManager->registerFont(cFontBytes, cFontSize);
+        std::string cFontName = self.cFontManager->RegisterFont(cFontBytes, cFontSize);
         NSString* fontName = [NSString stringWithCString:cFontName.c_str() encoding:[NSString defaultCStringEncoding]];
         
         return fontName;
-    } catch (const std::exception e) {
+    } catch (const std::exception& e) {
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];
         

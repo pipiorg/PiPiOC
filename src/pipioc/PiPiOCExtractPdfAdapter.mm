@@ -10,8 +10,6 @@
 
 @implementation PiPiOCExtractPdfAdapter
 
-NSString* const PiPiOCExtractPdfUnknownExceptionName = @"PiPiOCExtractPdfUnknownException";
-
 - (instancetype)initWithCExtractor:(PiPiExtractor *)cExtractor {
     self = [super init];
     
@@ -27,14 +25,14 @@ NSString* const PiPiOCExtractPdfUnknownExceptionName = @"PiPiOCExtractPdfUnknown
         return NO;
     }
     
-    return self.cExtractor->isOperable();
+    return self.cExtractor->IsOperable();
 }
 
 - (NSArray<PiPiOCPdfPage *> *)extractPage {
-    try {
+    return [self handleException:^id{
         NSMutableArray<PiPiOCPdfPage*>* mutablePages = [[NSMutableArray alloc] init];
         
-        std::vector<const PiPiPage*>* cPages = self.cExtractor->extractPage();
+        std::vector<const PiPiPage*>* cPages = self.cExtractor->ExtractPage();
         
         for (auto iterator = cPages->begin(); iterator != cPages->end(); iterator.operator++()) {
             const PiPiPage* cPage = *iterator;
@@ -54,19 +52,14 @@ NSString* const PiPiOCExtractPdfUnknownExceptionName = @"PiPiOCExtractPdfUnknown
         NSArray<PiPiOCPdfPage*>* pages = [[NSArray alloc] initWithArray:mutablePages];
         
         return pages;
-    } catch (const std::exception e) {
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCExtractPdfUnknownExceptionName reason:reason userInfo:nil];
-    }
+    }];
 }
 
 - (NSArray *)extractField {
-    try {
+    return [self handleException:^id{
         NSMutableArray<PiPiOCPdfField*>* mutableFields = [[NSMutableArray alloc] init];
         
-        std::vector<const PiPiField*>* cFields = self.cExtractor->extractField();
+        std::vector<const PiPiField*>* cFields = self.cExtractor->ExtractField();
         
         for (auto iterator = cFields->begin(); iterator != cFields->end(); iterator.operator++()) {
             const PiPiField* cField = *iterator;
@@ -118,11 +111,24 @@ NSString* const PiPiOCExtractPdfUnknownExceptionName = @"PiPiOCExtractPdfUnknown
         NSArray<PiPiOCPdfField*>* fields = [[NSArray alloc] initWithArray:mutableFields];
         
         return fields;
-    } catch (const std::exception e) {
+    }];
+}
+
+- (id) handleException: (id (^)())task {
+    try {
+        return task();
+    } catch (PiPiExtractException& e) {
+        PiPiExtractException::PiPiExtractExceptionCode cCode = e.getCode();
+        
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];
         
-        @throw [NSException exceptionWithName:PiPiOCExtractPdfUnknownExceptionName reason:reason userInfo:nil];
+        @throw [NSException exceptionWithName:PiPiOCExtractExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
+    } catch (std::exception& e) {
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCEditPdfUnknownExceptionName reason:reason userInfo:nil];
     }
 }
 

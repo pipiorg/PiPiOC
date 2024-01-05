@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "PiPiOCOperatePdfAdapter.h"
-#import "PiPiOCPdfPager.h"
 #import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfFiller.h"
 #import "PiPiOCPdfExtractor.h"
 #import "PiPiOCPdfFontManager.h"
+#import "PiPiOCExceptionName.h"
 
 @interface PiPiOCPdfOperator : NSObject
 
@@ -14,7 +14,6 @@
 
 -(PiPiOCPdfEditor*) getEditor;
 -(PiPiOCPdfFiller*) getFiller;
--(PiPiOCPdfPager*) getPager;
 -(PiPiOCPdfExtractor*) getExtractor;
 -(PiPiOCPdfFontManager*) getFontManager;
 
