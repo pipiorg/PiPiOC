@@ -9,19 +9,19 @@
 
 @implementation PiPiOCMultiPdfOperator
 
-- (instancetype)initWithAdapter:(PiPiOCMultiPdfOperatorAdapter *)adapter {
+- (instancetype)init {
     self = [super init];
     
     if (self) {
-        self.adapter = adapter;
+        self.adapter = [[PiPiOCMultiPdfOperatorAdapter alloc] init];
     }
     
     return self;
 }
 
 - (NSNumber*) add: (NSData*) pdfBytes {
-    size_t index = [self.adapter add:pdfBytes];
-    return [[NSNumber alloc] initWithUnsignedLong:index];
+    NSNumber* index = [self.adapter add:pdfBytes];
+    return index;
 }
 
 - (PiPiOCPdfOperator *)getOperator:(unsigned int)index {

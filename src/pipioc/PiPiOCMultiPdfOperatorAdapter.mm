@@ -28,14 +28,14 @@
     }
 }
 
-- (size_t)add:(NSData *)pdfBytes {
+- (NSNumber*)add:(NSData *)pdfBytes {
     try {
         size_t cPdfSize = [pdfBytes length];
         char* cPdfBytes = (char *)[pdfBytes bytes];
         
         size_t index = self.cMultiOp->Add(cPdfBytes, cPdfSize);
         
-        return index;
+        return [NSNumber numberWithUnsignedLong:index];
     } catch (PiPiFieldCompatibilityException& e) {
         PiPiFieldCompatibilityException::PiPiFieldCompatibilityExceptionCode cCode = e.getCode();
         

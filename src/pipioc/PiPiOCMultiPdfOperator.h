@@ -5,7 +5,7 @@
 
 @interface PiPiOCMultiPdfOperator : NSObject
 
-- (instancetype) initWithAdapter: (PiPiOCMultiPdfOperatorAdapter*) adapter;
+- (instancetype) init;
 -(NSNumber*) add: (NSData*) pdfBytes;
 -(PiPiOCPdfOperator*) getOperator: (unsigned int) index;
 -(PiPiOCPdfPager*) getPager;
