@@ -20,8 +20,8 @@
 }
 
 - (NSNumber*) add: (NSData*) pdfBytes {
-    NSNumber* index = [self.adapter add:pdfBytes];
-    return index;
+    size_t index = [self.adapter add:pdfBytes];
+    return [[NSNumber alloc] initWithUnsignedLong:index];
 }
 
 - (PiPiOCPdfOperator *)getOperator:(unsigned int)index {
