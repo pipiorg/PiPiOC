@@ -9,7 +9,7 @@
 
 -(NSNumber*)add: (NSData*) pdfBytes;
 
--(PiPiOCOperatePdfAdapter*) getOperator: (unsigned int) index;
+-(PiPiOCOperatePdfAdapter*) getOperator: (NSNumber*) index;
 -(PiPiOCPagePdfAdapter*) getPager;
 
 @end

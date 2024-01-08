@@ -8,7 +8,6 @@
 
 @property (strong, nonatomic) NSMutableArray<PiPiOCPdfOperator*>* operators;
 @property (strong, nonatomic) NSMutableDictionary<NSNumber*, NSNumber*>* operatorMap;
-
 @end
 
 @implementation PiPiOCMultiPdfOperator
@@ -30,12 +29,12 @@
 
 - (NSNumber*) add: (NSData*) pdfBytes {
     NSNumber* index = [self.adapter add:pdfBytes];
-    NSNumber* opIndex = [[NSNumber alloc] initWithUnsignedInteger:[self.operators count]];
+    NSNumber* opIndex = [self.operators count];
     
     PiPiOCOperatePdfAdapter* opAdapter = [self.adapter getOperator:index];
-    PiPiOCPdfOperator* op = [[PiPiOCPdfOperator alloc] initWithAdapter: opAdapter];
-    [self.operators addObject:op];
+    PiPiOCPdfOperator* op = [[PiPiOCPdfOperator alloc] initWithAdapter:opAdapter];
     
+    [self.operators addObject:op];
     [self.operatorMap setObject:opIndex forKey:index];
     
     return index;

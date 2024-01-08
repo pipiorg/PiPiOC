@@ -7,6 +7,9 @@
 
 @property(assign, nonatomic) PiPiMultiOperator* cMultiOp;
 
+@property (strong, nonatomic) NSMutableArray<PiPiOCOperatePdfAdapter*>* operatorAdapters;
+@property (strong, nonatomic) NSMutableDictionary<NSNumber*, NSNumber*>* operatorAdapterMap;
+
 @end
 
 @implementation PiPiOCMultiPdfOperatorAdapter
@@ -33,9 +36,18 @@
         size_t cPdfSize = [pdfBytes length];
         char* cPdfBytes = (char *)[pdfBytes bytes];
         
-        size_t index = self.cMultiOp->Add(cPdfBytes, cPdfSize);
+        size_t cIndex = self.cMultiOp->Add(cPdfBytes, cPdfSize);
         
-        return [NSNumber numberWithUnsignedLong:index];
+        NSNumber* index = [[NSNumber alloc] initWithUnsignedLong:cIndex];
+        NSNumber* opAdapterIndex = [NSNumber numberWithUnsignedInteger:self.operatorAdapters.count];
+        
+        PiPiOperator* cOp = self.cMultiOp->GetOperator(cIndex);
+        PiPiOCOperatePdfAdapter* opAdapter = [[PiPiOCOperatePdfAdapter alloc] initWithCOperator:cOp];
+        
+        [self.operatorAdapters addObject:opAdapter];
+        [self.operatorAdapterMap setObject:opAdapterIndex forKey:index];
+        
+        return index;
     } catch (PiPiFieldCompatibilityException& e) {
         PiPiFieldCompatibilityException::PiPiFieldCompatibilityExceptionCode cCode = e.getCode();
         
@@ -51,12 +63,12 @@
     }
 }
 
-- (PiPiOCOperatePdfAdapter *)getOperator:(unsigned int)index {
+- (PiPiOCOperatePdfAdapter *)getOperator:(NSNumber*)index {
     try {
         PiPiMultiOperator* cMultiOp = self.cMultiOp;
-        PiPiOperator* cOp = cMultiOp->GetOperator(index);
         
-        PiPiOCOperatePdfAdapter* opAdapter = [[PiPiOCOperatePdfAdapter alloc] initWithCOperator:cOp];
+        NSNumber* opAdapterIndex = [self.operatorAdapterMap objectForKey:index];
+        PiPiOCOperatePdfAdapter* opAdapter = [self.operatorAdapters objectAtIndex:[opAdapterIndex unsignedIntegerValue]];
         
         return opAdapter;
     } catch (PiPiMultiOperateException& e) {
