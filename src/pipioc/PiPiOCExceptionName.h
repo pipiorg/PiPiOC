@@ -1,15 +1,15 @@
 #import <Foundation/Foundation.h>
 
-NSString* const PiPiOCEditPdfUnknownExceptionName = @"PiPiOCEditPdfUnkownException";
-NSString* const PiPiOCOperatePdfUnknownExceptionName = @"PiPiOCOperatePdfUnknownException";
-NSString* const PiPiOCMultiOperatePdfUnknownExceptionName = @"PiPiOCMultiOperatePdfUnknownException";
-NSString* const PiPiOCPagePdfUnknownExceptionName = @"PiPiOCPagePdfUnknownException";
+FOUNDATION_EXPORT NSString* const PiPiOCEditPdfUnknownExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCOperatePdfUnknownExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCMultiOperatePdfUnknownExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCPagePdfUnknownExceptionName;
 
-NSString* const PiPiOCAppearanceExceptionName = @"PiPiOCAppearanceException";
-NSString* const PiPiOCEditFieldExceptionName = @"PiPiOCEditFieldException";
-NSString* const PiPiOCExtractExceptionName = @"PiPiOCExtractException";
-NSString* const PiPiOCFieldCompatibilityExceptionName = @"PiPiFieldCompatibilityException";
-NSString* const PiPiOCFillFieldExceptionName = @"PiPiFillFieldException";
-NSString* const PiPiOCManageFieldExceptionName = @"PiPiManageFieldException";
-NSString* const PiPiOCPageExceptionName = @"PiPiPageException";
-NSString* const PiPiOCMultiOperateExceptionName = @"PiPiOCMultiOperateException";
+FOUNDATION_EXPORT NSString* const PiPiOCAppearanceExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCEditFieldExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCExtractExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCFieldCompatibilityExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCFillFieldExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCManageFieldExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCPageExceptionName;
+FOUNDATION_EXPORT NSString* const PiPiOCMultiOperateExceptionName;
