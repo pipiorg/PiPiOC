@@ -21,8 +21,8 @@
 
     ```bash
     # Run prepare script
-    ./script/prepare-ios.sh
+    ./scripts/prepare-ios.sh
 
     # Run build script
-    ./script/build-ios.sh
+    ./scripts/build-ios.sh
     ```
