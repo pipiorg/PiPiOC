@@ -2,13 +2,13 @@
 pushd `dirname $0`
 pushd ..
 
+root=$(pwd)
+
 rm -rf build
 rm -rf ext
 rm -rf ext-build
 
 mkdir build
-
-root=$(pwd)
 
 pushd build
 
