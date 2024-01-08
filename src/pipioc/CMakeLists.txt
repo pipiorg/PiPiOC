@@ -44,6 +44,16 @@ set_target_properties(pipioc PROPERTIES
     XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "gnu++17"
 )
 
+if (DEFINED PLATFORM) 
+    if ("${PLATFORM}" STREQUAL "OS64")
+        set_property (TARGET pipioc PROPERTY XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "")
+        set_property (TARGET pipioc PROPERTY XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "")
+        set_property (TARGET pipioc PROPERTY XCODE_ATTRIBUTE_CODE_SIGN_STYLE Manual)
+        set_property (TARGET pipioc PROPERTY XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO")
+    endif()
+endif()
+
+
 target_link_libraries(pipioc "-framework Foundation" pipi::pipi)
 
 target_include_directories(pipioc PUBLIC ${PIPI_SOURCE_DIR}/src/pipi)
