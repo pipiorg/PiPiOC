@@ -19,6 +19,11 @@
     return self;
 }
 
+- (PiPiOCMultiPdfOperator*) add: (NSData*) pdfBytes {
+    [self.adapter add:pdfBytes];
+    return self;
+}
+
 - (PiPiOCPdfOperator *)getOperator:(unsigned int)index {
     PiPiOCOperatePdfAdapter* opAdapter = [self.adapter getOperator:index];
     PiPiOCPdfOperator* op = [[PiPiOCPdfOperator alloc] initWithAdapter: opAdapter];
