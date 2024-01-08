@@ -130,9 +130,6 @@ using namespace PiPi;
         
         NSData* pdfBytes = [NSData dataWithBytes:cPdfBytes length:cPdfSize];
         
-        delete self.cOperator;
-        self.cOperator = NULL;
-        
         return pdfBytes;
     } catch (PiPiAppearanceException& e) {
         PiPiAppearanceException::PiPiAppearanceExceptionCode cCode = e.getCode();
