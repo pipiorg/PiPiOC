@@ -1,5 +1,5 @@
 #import "PiPiOCPdfOperator+Internal.h"
 
-@interface PiPiOCMultiOperator ()
+@interface PiPiOCMultiPdfOperator ()
 
 @end

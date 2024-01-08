@@ -3,7 +3,7 @@
 #import "PiPiOCPdfPager.h"
 #import "PiPiOCPdfOperator.h"
 
-@interface PiPiOCMultiOperator : NSObject
+@interface PiPiOCMultiPdfOperator : NSObject
 
 - (instancetype) initWithAdapter: (PiPiOCMultiPdfOperatorAdapter*) adapter;
 -(PiPiOCPdfOperator*) getOperator: (unsigned int) index;

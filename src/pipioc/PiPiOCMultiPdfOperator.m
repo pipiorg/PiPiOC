@@ -1,13 +1,13 @@
-#import "PiPiOCMultiOperator.h"
-#import "PiPiOCMultiOperator+Internal.h"
+#import "PiPiOCMultiPdfOperator.h"
+#import "PiPiOCMultiPdfOperator+Internal.h"
 
-@interface PiPiOCMultiOperator ()
+@interface PiPiOCMultiPdfOperator ()
 
 @property (strong, nonatomic) PiPiOCMultiPdfOperatorAdapter* adapter;
 
 @end
 
-@implementation PiPiOCMultiOperator
+@implementation PiPiOCMultiPdfOperator
 
 - (instancetype)initWithAdapter:(PiPiOCMultiPdfOperatorAdapter *)adapter {
     self = [super init];
