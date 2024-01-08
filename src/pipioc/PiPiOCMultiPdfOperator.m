@@ -33,7 +33,7 @@
 
 - (NSNumber*) add: (NSData*) pdfBytes {
     NSNumber* index = [self.adapter add:pdfBytes];
-    NSNumber* opIndex = [self.operators count];
+    NSNumber* opIndex = [NSNumber numberWithUnsignedInteger:self.operators.count];
     
     PiPiOCOperatePdfAdapter* opAdapter = [self.adapter getOperator:index];
     PiPiOCPdfOperator* op = [[PiPiOCPdfOperator alloc] initWithAdapter:opAdapter];
