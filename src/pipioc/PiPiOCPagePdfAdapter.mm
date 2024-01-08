@@ -28,7 +28,7 @@
         std::vector<char>* cNewPdf;
         
         for (NSNumber* index in indexs) {
-            unsigned int cIndex = [index unsignedIntValue];
+            size_t cIndex = [index unsignedLongValue];
             cIndexs->push_back(cIndex);
         }
         
