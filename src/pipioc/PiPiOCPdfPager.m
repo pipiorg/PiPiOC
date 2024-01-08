@@ -22,7 +22,7 @@
     return [self.adapter merge:indexs];
 }
 
-- (NSArray<NSData *> *)split:(unsigned int)index withInstruction:(NSString *)instruction {
+- (NSArray<NSData *> *)split:(NSNumber*)index withInstruction:(NSString *)instruction {
     return [self.adapter split:index withInstruction:instruction];
 }
 

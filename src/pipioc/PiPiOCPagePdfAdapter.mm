@@ -60,14 +60,14 @@
     }
 }
 
-- (NSArray<NSData *> *)split:(unsigned int)index withInstruction:(NSString *)instruction {
+- (NSArray<NSData *> *)split:(NSNumber*)index withInstruction:(NSString *)instruction {
     try {
         PiPiPager* cPager = self.cPager;
         
         std::string cInstruction = std::string([instruction UTF8String]);
         std::vector<std::vector<char>*>* cNewPdfs;
         
-        cPager->Split(index, cInstruction, &cNewPdfs);
+        cPager->Split([index unsignedLongValue], cInstruction, &cNewPdfs);
         
         NSMutableArray* mutableNewPdfs = [[NSMutableArray alloc] init];
         for (auto iterator = cNewPdfs->begin(); iterator != cNewPdfs->end(); iterator.operator++()) {

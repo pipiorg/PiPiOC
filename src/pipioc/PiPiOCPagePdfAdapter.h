@@ -4,6 +4,6 @@
 @interface PiPiOCPagePdfAdapter : NSObject
 
 -(NSData*) merge:(NSArray<NSNumber*>*) indexs;
--(NSArray<NSData*>*) split:(unsigned int) index withInstruction:(NSString*) instruction;
+-(NSArray<NSData*>*) split:(NSNumber*) index withInstruction:(NSString*) instruction;
 
 @end
