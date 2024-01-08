@@ -27,7 +27,7 @@
     ./scripts/build-ios.sh
 
     # The compiled framework under
-    # ./build/src/pipioc/Release-iphoneos
+    #   ./build/src/pipioc/Release-iphoneos
     # The compiled dependency under
-    # ./build/lib/Release
+    #   ./build/lib/Release
     ```
