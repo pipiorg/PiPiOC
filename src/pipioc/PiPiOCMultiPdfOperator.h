@@ -7,7 +7,7 @@
 
 - (instancetype) init;
 -(NSNumber*) add: (NSData*) pdfBytes;
--(PiPiOCPdfOperator*) getOperator: (unsigned int) index;
+-(PiPiOCPdfOperator*) getOperator: (NSNumber*) index;
 -(PiPiOCPdfPager*) getPager;
 
 @end
