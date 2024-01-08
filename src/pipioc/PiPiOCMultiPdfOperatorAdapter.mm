@@ -5,10 +5,10 @@
 
 @interface PiPiOCMultiPdfOperatorAdapter ()
 
-@property(assign, nonatomic) PiPiMultiOperator* cMultiOp;
+@property(assign, atomic) PiPiMultiOperator* cMultiOp;
 
-@property (strong, nonatomic) NSMutableArray<PiPiOCOperatePdfAdapter*>* operatorAdapters;
-@property (strong, nonatomic) NSMutableDictionary<NSNumber*, NSNumber*>* operatorAdapterMap;
+@property (strong, atomic) NSMutableArray<PiPiOCOperatePdfAdapter*>* operatorAdapters;
+@property (strong, atomic) NSMutableDictionary<NSNumber*, NSNumber*>* operatorAdapterMap;
 
 @end
 

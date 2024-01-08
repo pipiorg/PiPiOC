@@ -3,7 +3,7 @@
 
 @interface PiPiOCFontManageAdapter()
 
-@property (assign, nonatomic) PiPiFontManager* cFontManager;
+@property (assign, atomic) PiPiFontManager* cFontManager;
 
 @end
 
