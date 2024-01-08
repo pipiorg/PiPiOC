@@ -20,6 +20,9 @@
     if (self) {
         PiPiMultiOperator* cMultiOp = new PiPiMultiOperator();
         self.cMultiOp = cMultiOp;
+        
+        self.operatorAdapters = [[NSMutableArray alloc] init];
+        self.operatorAdapterMap = [[NSMutableDictionary alloc] init];
     }
     
     return self;
