@@ -18,10 +18,9 @@
     if (self) {
         PiPiOCMultiPdfOperatorAdapter* adapter = [[PiPiOCMultiPdfOperatorAdapter alloc] init];
         
-        PiPiOCPagePdfAdapter* pageAdapter = [self.adapter getPager];
+        PiPiOCPagePdfAdapter* pageAdapter = [adapter getPager];
         PiPiOCPdfPager* pager = [[PiPiOCPdfPager alloc] initWithAdapter:pageAdapter];
         
-
         self.operators = [[NSMutableArray alloc] init];
         self.operatorMap = [[NSMutableDictionary alloc] init];
         self.adapter = adapter;

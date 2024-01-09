@@ -5,7 +5,9 @@
 
 @interface PiPiOCMultiPdfOperatorAdapter ()
 
-@property(assign, atomic) PiPiMultiOperator* cMultiOp;
+@property (assign, atomic) PiPiMultiOperator* cMultiOp;
+
+@property (strong, atomic) PiPiOCPagePdfAdapter* pageAdapter;
 
 @property (strong, atomic) NSMutableArray<PiPiOCOperatePdfAdapter*>* operatorAdapters;
 @property (strong, atomic) NSMutableDictionary<NSNumber*, NSNumber*>* operatorAdapterMap;
@@ -20,6 +22,9 @@
     if (self) {
         PiPiMultiOperator* cMultiOp = new PiPiMultiOperator();
         self.cMultiOp = cMultiOp;
+        
+        PiPiPager* cPager = cMultiOp->GetPager();
+        self.pageAdapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:cPager];
         
         self.operatorAdapters = [[NSMutableArray alloc] init];
         self.operatorAdapterMap = [[NSMutableDictionary alloc] init];
@@ -91,12 +96,7 @@
 }
 
 - (PiPiOCPagePdfAdapter *)getPager {
-    PiPiMultiOperator* cMultiOp = self.cMultiOp;
-    PiPiPager* pager = cMultiOp->GetPager();
-    
-    PiPiOCPagePdfAdapter* adapter = [[PiPiOCPagePdfAdapter alloc] initWithCPager:pager];
-    
-    return adapter;
+    return self.pageAdapter;
 }
 
 @end

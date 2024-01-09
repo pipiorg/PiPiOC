@@ -54,7 +54,7 @@
         size_t cNewPdfSize = cNewPdf->size();
         char* cNewPdfBytes = new char[cNewPdfSize];
         for (size_t i = 0; i < cNewPdfSize; i++) {
-            *(cNewPdfBytes + i) = cNewPdf->at(i);
+            cNewPdfBytes[i] = (*cNewPdf)[i];
         }
 
         NSData* data = [NSData dataWithBytes:cNewPdfBytes length:cNewPdfSize];
