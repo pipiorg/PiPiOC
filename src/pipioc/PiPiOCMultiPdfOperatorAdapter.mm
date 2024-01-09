@@ -31,6 +31,7 @@
 - (void)dealloc {
     if (self.cMultiOp) {
         delete self.cMultiOp;
+        self.cMultiOp = NULL;
     }
 }
 
