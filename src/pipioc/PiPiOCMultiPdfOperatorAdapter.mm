@@ -51,6 +51,13 @@
         [self.operatorAdapterMap setObject:opAdapterIndex forKey:index];
         
         return index;
+    } catch (PiPiMultiOperateException& e) {
+        PiPiMultiOperateException::PiPiMultiOperateExceptionCode cCode = e.getCode();
+        
+        const char* cReason = e.what();
+        NSString* reason = [NSString stringWithUTF8String:cReason];
+        
+        @throw [NSException exceptionWithName:PiPiOCMultiOperateExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
     } catch (PiPiFieldCompatibilityException& e) {
         PiPiFieldCompatibilityException::PiPiFieldCompatibilityExceptionCode cCode = e.getCode();
         
@@ -74,13 +81,6 @@
         PiPiOCOperatePdfAdapter* opAdapter = [self.operatorAdapters objectAtIndex:[opAdapterIndex unsignedIntegerValue]];
         
         return opAdapter;
-    } catch (PiPiMultiOperateException& e) {
-        PiPiMultiOperateException::PiPiMultiOperateExceptionCode cCode = e.getCode();
-        
-        const char* cReason = e.what();
-        NSString* reason = [NSString stringWithUTF8String:cReason];
-        
-        @throw [NSException exceptionWithName:PiPiOCMultiOperateExceptionName reason:[NSString stringWithFormat:@"code: %u, %@", cCode, reason] userInfo:nil];
     } catch (std::exception& e) {
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];

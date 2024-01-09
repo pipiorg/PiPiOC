@@ -11,6 +11,8 @@ using namespace PiPi;
 
 @interface PiPiOCOperatePdfAdapter ()
 
+@property (assign, atomic) BOOL multiManaged;
+
 @property (assign, atomic) PiPiOperator* cOperator;
 
 @property (strong, atomic) PiPiOCEditPdfAdapter* editAdapter;
@@ -23,9 +25,11 @@ using namespace PiPi;
 @implementation PiPiOCOperatePdfAdapter
 
 - (void)dealloc {
-    if (self.cOperator) {
-        delete self.cOperator;
-        self.cOperator = NULL;
+    if (!self.multiManaged) {
+        if (self.cOperator) {
+            delete self.cOperator;
+            self.cOperator = NULL;
+        }
     }
 }
 
@@ -49,6 +53,8 @@ using namespace PiPi;
             self.editAdapter = editAdapter;
             self.extractAdapter = extractAdapter;
             self.fontManageAdapter = fontManageAdapter;
+            
+            self.multiManaged = YES;
         } catch (PiPiFieldCompatibilityException& e) {
             PiPiFieldCompatibilityException::PiPiFieldCompatibilityExceptionCode cCode = e.getCode();
             
@@ -91,6 +97,8 @@ using namespace PiPi;
             self.editAdapter = editAdapter;
             self.extractAdapter = extractAdapter;
             self.fontManageAdapter = fontManageAdapter;
+            
+            self.multiManaged = NO;
         } catch (PiPiFieldCompatibilityException& e) {
             PiPiFieldCompatibilityException::PiPiFieldCompatibilityExceptionCode cCode = e.getCode();
             
