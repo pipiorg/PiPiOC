@@ -21,6 +21,13 @@ NSString* const PiPiOCManageFontUnknownExceptionName = @"PiPiOCManageFontUnknown
     return self;
 }
 
+- (void)dealloc {
+    if (self.cFontManager) {
+        delete self.cFontManager;
+        self.cFontManager = NULL;
+    }
+}
+
 - (BOOL)isOperable {
     if (!self.cFontManager) {
         return NO;

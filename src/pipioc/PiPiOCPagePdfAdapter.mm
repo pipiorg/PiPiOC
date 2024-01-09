@@ -20,6 +20,21 @@
     return self;
 }
 
+- (void)dealloc {
+    if (self.cPager) {
+        delete self.cPager;
+        self.cPager = NULL;
+    }
+}
+
+- (BOOL)isOperable {
+    if (!self.cPager) {
+        return NO;
+    }
+    
+    return self.cPager->IsOperable();
+}
+
 - (NSData *)merge:(NSArray<NSNumber*> *)indexs {
     try {
         PiPiPager* cPager = self.cPager;

@@ -20,6 +20,13 @@
     return self;
 }
 
+- (void)dealloc {
+    if (self.cExtractor) {
+        delete self.cExtractor;
+        self.cExtractor = NULL;
+    }
+}
+
 - (BOOL)isOperable {
     if (!self.cExtractor) {
         return NO;

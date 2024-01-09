@@ -18,6 +18,10 @@
     return self;
 }
 
+- (BOOL)isOperable {
+    return [self.adapter isOperable];
+}
+
 - (NSData *)merge:(NSArray<NSNumber *> *)indexs {
     return [self.adapter merge:indexs];
 }

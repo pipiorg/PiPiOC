@@ -19,6 +19,10 @@
     return self;
 }
 
+- (BOOL)isOperable {
+    return [self.adapter isOperable];
+}
+
 - (NSString*)registerFont:(NSData *)fontBytes {
     return [self.adapter registerFont:fontBytes];
 }

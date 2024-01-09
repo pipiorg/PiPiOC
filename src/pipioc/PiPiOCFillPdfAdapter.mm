@@ -22,6 +22,13 @@ NSString* const PiPiOCFillPdfUnknownExceptionName = @"PiPiOCFillPdfUnknownExcept
     return self;
 }
 
+- (void)dealloc {
+    if (self.cFiller) {
+        delete self.cFiller;
+        self.cFiller = NULL;
+    }
+}
+
 - (BOOL)isOperable {
     if (!self.cFiller) {
         return NO;

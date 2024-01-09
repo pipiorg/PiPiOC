@@ -18,6 +18,13 @@
     return self.cEditor->IsOperable();
 }
 
+- (void)dealloc {
+    if (self.cEditor) {
+        delete self.cEditor;
+        self.cEditor = NULL;
+    }
+}
+
 - (instancetype)initWithCEditor:(PiPiEditor *)cEditor {
     self = [super init];
     

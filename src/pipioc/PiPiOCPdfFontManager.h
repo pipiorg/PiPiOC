@@ -6,6 +6,7 @@
 
 - (instancetype) initWithAdapter: (PiPiOCFontManageAdapter*) adapter;
 
+- (BOOL) isOperable;
 - (NSString*) registerFont: (NSData*) fontBytes;
 
 @end
