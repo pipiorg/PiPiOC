@@ -139,8 +139,8 @@ using namespace PiPi;
         NSData* pdfBytes = [NSData dataWithBytes:cPdfBytes length:cPdfSize];
         
         return pdfBytes;
-    } catch (PiPiAppearanceException& e) {
-        PiPiAppearanceException::PiPiAppearanceExceptionCode cCode = e.getCode();
+    } catch (PiPiManageAppearanceException& e) {
+        PiPiManageAppearanceException::PiPiManageAppearanceExceptionCode cCode = e.getCode();
         
         const char* cReason = e.what();
         NSString* reason = [NSString stringWithUTF8String:cReason];
