@@ -3,7 +3,7 @@
 #import "PiPiOCPdfEditor.h"
 #import "PiPiOCPdfFiller.h"
 #import "PiPiOCPdfExtractor.h"
-#import "PiPiOCPdfFontManager.h"
+#import "PiPiOCPdfFontRegister.h"
 #import "PiPiOCExceptionName.h"
 
 @interface PiPiOCPdfOperator : NSObject
@@ -15,7 +15,7 @@
 -(PiPiOCPdfEditor*) getEditor;
 -(PiPiOCPdfFiller*) getFiller;
 -(PiPiOCPdfExtractor*) getExtractor;
--(PiPiOCPdfFontManager*) getFontManager;
+-(PiPiOCPdfFontRegister*) getFontRegister;
 
 -(NSData*) finalize;
 

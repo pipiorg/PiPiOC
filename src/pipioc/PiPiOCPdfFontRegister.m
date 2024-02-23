@@ -1,15 +1,15 @@
-#import "PiPiOCPdfFontManager.h"
-#import "PiPiOCFontManageAdapter.h"
+#import "PiPiOCPdfFontRegister.h"
+#import "PiPiOCFontRegisterAdapter.h"
 
-@interface PiPiOCPdfFontManager ()
+@interface PiPiOCPdfFontRegister ()
 
-@property (strong, nonatomic) PiPiOCFontManageAdapter* adapter;
+@property (strong, nonatomic) PiPiOCFontRegisterAdapter* adapter;
 
 @end
 
-@implementation PiPiOCPdfFontManager
+@implementation PiPiOCPdfFontRegister
 
-- (instancetype)initWithAdapter:(PiPiOCFontManageAdapter *)adapter {
+- (instancetype)initWithAdapter:(PiPiOCFontRegisterAdapter *)adapter {
     self = [super init];
     
     if (self) {

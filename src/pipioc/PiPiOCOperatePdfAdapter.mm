@@ -5,7 +5,7 @@
 #import "PiPiOCFillPdfAdapter+Internal.h"
 #import "PiPiOCEditPdfAdapter+Internal.h"
 #import "PiPiOCExtractPdfAdapter+Internal.h"
-#import "PiPiOCFontManageAdapter+Internal.h"
+#import "PiPiOCFontRegisterAdapter+Internal.h"
 
 using namespace PiPi;
 
@@ -18,7 +18,7 @@ using namespace PiPi;
 @property (strong, atomic) PiPiOCEditPdfAdapter* editAdapter;
 @property (strong, atomic) PiPiOCFillPdfAdapter* fillAdapter;
 @property (strong, atomic) PiPiOCExtractPdfAdapter* extractAdapter;
-@property (strong, atomic) PiPiOCFontManageAdapter* fontManageAdapter;
+@property (strong, atomic) PiPiOCFontRegisterAdapter* fontRegisterAdapter;
 
 @end
 
@@ -41,18 +41,18 @@ using namespace PiPi;
             PiPiEditor* cEditor = cOperator->GetEditor();
             PiPiFiller* cFiller = cOperator->GetFiller();
             PiPiExtractor* cExtractor = cOperator->GetExtractor();
-            PiPiFontManager* cFontManager = cOperator->GetFontManager();
+            PiPiFontRegister* cFontRegister = cOperator->GetFontRegister();
             
             PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
             PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
             PiPiOCExtractPdfAdapter* extractAdapter = [[PiPiOCExtractPdfAdapter alloc] initWithCExtractor:cExtractor];
-            PiPiOCFontManageAdapter* fontManageAdapter = [[PiPiOCFontManageAdapter alloc] initWithCFontManager:cFontManager];
+            PiPiOCFontRegisterAdapter* fontRegisterAdapter = [[PiPiOCFontRegisterAdapter alloc] initWithCFontRegister:cFontRegister];
             
             self.cOperator = cOperator;
             self.fillAdapter = fillAdapter;
             self.editAdapter = editAdapter;
             self.extractAdapter = extractAdapter;
-            self.fontManageAdapter = fontManageAdapter;
+            self.fontRegisterAdapter = fontRegisterAdapter;
             
             self.multiManaged = YES;
         } catch (PiPiFieldCompatibilityException& e) {
@@ -85,18 +85,18 @@ using namespace PiPi;
             PiPiEditor* cEditor = cOperator->GetEditor();
             PiPiFiller* cFiller = cOperator->GetFiller();
             PiPiExtractor* cExtractor = cOperator->GetExtractor();
-            PiPiFontManager* cFontManager = cOperator->GetFontManager();
+            PiPiFontRegister* cFontRegister = cOperator->GetFontRegister();
             
             PiPiOCEditPdfAdapter* editAdapter = [[PiPiOCEditPdfAdapter alloc] initWithCEditor:cEditor];
             PiPiOCFillPdfAdapter* fillAdapter = [[PiPiOCFillPdfAdapter alloc] initWithFiller:cFiller];
             PiPiOCExtractPdfAdapter* extractAdapter = [[PiPiOCExtractPdfAdapter alloc] initWithCExtractor:cExtractor];
-            PiPiOCFontManageAdapter* fontManageAdapter = [[PiPiOCFontManageAdapter alloc] initWithCFontManager:cFontManager];
+            PiPiOCFontRegisterAdapter* fontRegisterAdapter = [[PiPiOCFontRegisterAdapter alloc] initWithCFontRegister:cFontRegister];
             
             self.cOperator = cOperator;
             self.fillAdapter = fillAdapter;
             self.editAdapter = editAdapter;
             self.extractAdapter = extractAdapter;
-            self.fontManageAdapter = fontManageAdapter;
+            self.fontRegisterAdapter = fontRegisterAdapter;
             
             self.multiManaged = NO;
         } catch (PiPiFieldCompatibilityException& e) {
@@ -166,8 +166,8 @@ using namespace PiPi;
     return self.extractAdapter;
 }
 
-- (PiPiOCFontManageAdapter *)getFontManagerAdapter {
-    return self.fontManageAdapter;
+- (PiPiOCFontRegisterAdapter *)getFontRegisterAdapter {
+    return self.fontRegisterAdapter;
 }
 
 @end

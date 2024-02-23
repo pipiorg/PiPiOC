@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface PiPiOCFontManageAdapter : NSObject
+@interface PiPiOCFontRegisterAdapter : NSObject
 
 - (BOOL)isOperable;
 

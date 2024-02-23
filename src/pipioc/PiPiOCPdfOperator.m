@@ -8,7 +8,7 @@
 @property (strong, atomic) PiPiOCPdfEditor* editor;
 @property (strong, atomic) PiPiOCPdfFiller* filler;
 @property (strong, atomic) PiPiOCPdfExtractor* extractor;
-@property (strong, atomic) PiPiOCPdfFontManager* fontManager;
+@property (strong, atomic) PiPiOCPdfFontRegister* FontRegister;
 
 @end
 
@@ -21,18 +21,18 @@
         PiPiOCFillPdfAdapter* fillAdapter = [operateAdapter getFillAdapter];
         PiPiOCEditPdfAdapter* editAdapter = [operateAdapter getEditAdapter];
         PiPiOCExtractPdfAdapter* extractAdapter = [operateAdapter getExtractAdapter];
-        PiPiOCFontManageAdapter* fontManageAdapter = [operateAdapter getFontManagerAdapter];
+        PiPiOCFontRegisterAdapter* FontRegisterAdapter = [operateAdapter getFontRegisterAdapter];
         
         PiPiOCPdfEditor* editor = [[PiPiOCPdfEditor alloc] initWithAdapter:editAdapter];
         PiPiOCPdfFiller* filler = [[PiPiOCPdfFiller alloc] initWithAdapter:fillAdapter];
         PiPiOCPdfExtractor* extractor = [[PiPiOCPdfExtractor alloc] initWithAdapter:extractAdapter];
-        PiPiOCPdfFontManager* fontManager = [[PiPiOCPdfFontManager alloc] initWithAdapter:fontManageAdapter];
+        PiPiOCPdfFontRegister* FontRegister = [[PiPiOCPdfFontRegister alloc] initWithAdapter:FontRegisterAdapter];
         
         self.adapter = operateAdapter;
         self.editor = editor;
         self.filler = filler;
         self.extractor = extractor;
-        self.fontManager = fontManager;
+        self.FontRegister = FontRegister;
     }
     
     return self;
@@ -47,18 +47,18 @@
         PiPiOCFillPdfAdapter* fillAdapter = [operateAdapter getFillAdapter];
         PiPiOCEditPdfAdapter* editAdapter = [operateAdapter getEditAdapter];
         PiPiOCExtractPdfAdapter* extractAdapter = [operateAdapter getExtractAdapter];
-        PiPiOCFontManageAdapter* fontManageAdapter = [operateAdapter getFontManagerAdapter];
+        PiPiOCFontRegisterAdapter* FontRegisterAdapter = [operateAdapter getFontRegisterAdapter];
         
         PiPiOCPdfEditor* editor = [[PiPiOCPdfEditor alloc] initWithAdapter:editAdapter];
         PiPiOCPdfFiller* filler = [[PiPiOCPdfFiller alloc] initWithAdapter:fillAdapter];
         PiPiOCPdfExtractor* extractor = [[PiPiOCPdfExtractor alloc] initWithAdapter:extractAdapter];
-        PiPiOCPdfFontManager* fontManager = [[PiPiOCPdfFontManager alloc] initWithAdapter:fontManageAdapter];
+        PiPiOCPdfFontRegister* FontRegister = [[PiPiOCPdfFontRegister alloc] initWithAdapter:FontRegisterAdapter];
         
         self.adapter = operateAdapter;
         self.editor = editor;
         self.filler = filler;
         self.extractor = extractor;
-        self.fontManager = fontManager;
+        self.FontRegister = FontRegister;
     }
     
     return self;
@@ -84,8 +84,8 @@
     return [self.adapter finalize];
 }
 
-- (PiPiOCPdfFontManager *)getFontManager {
-    return self.fontManager;
+- (PiPiOCPdfFontRegister *)getFontRegister {
+    return self.FontRegister;
 }
 
 @end
